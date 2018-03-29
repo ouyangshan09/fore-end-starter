@@ -54,8 +54,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf ./dist/*.* ./dist/*",
+    "clean:lib": "rimraf ./lib/*.* ./lib/*",
     "build": "npm run clean && ts-node ./config/webpack.prod.ts",
-    "start": "ts-node ./config/webpack.local.ts"
+    "start": "ts-node ./config/webpack.local.ts",
+    "dll": "npm run clean:lib && ts-node ./config/webpack.dll.ts"
   },
   "repository": {
     "type": "git",
