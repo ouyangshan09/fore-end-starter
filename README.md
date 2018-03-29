@@ -1,7 +1,7 @@
 # 前端项目启动器(包含多语言)
 
-- javascript
-- typescript
+- javascript (js-starter分支)
+- typescript (ts-starter分支)
 - react + js
 - react + ts
 - vue + js
