@@ -1,0 +1,62 @@
+{
+  "name": "fore-end-starter",
+  "version": "1.0.0",
+  "description": "- javascript\r - typescript\r - react + js\r - react + ts\r - vue + js\r - vue + ts",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "dependencies": {
+    "autoprefixer": "^8.2.0",
+    "awesome-typescript-loader": "^4.0.1",
+    "babel-loader": "^7.1.4",
+    "chalk": "^2.3.2",
+    "classnames": "^2.2.5",
+    "css-loader": "^0.28.11",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.1.0",
+    "immutable": "^3.8.2",
+    "jest": "^22.4.3",
+    "js-cookie": "^2.2.0",
+    "less-loader": "^4.1.0",
+    "less": "^3.0.1",
+    "lodash": "^4.17.5",
+    "moment": "^2.21.0",
+    "node-sass": "^4.8.3",
+    "opn": "^5.3.0",
+    "ora": "^2.0.0",
+    "postcss-loader": "^2.1.3",
+    "rimraf": "^2.6.2",
+    "sass-loader": "^6.0.7",
+    "style-loader": "^0.20.3",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint": "^9.1.3",
+    "ts-node": "^5.0.1",
+    "typescript": "^2.8.1",
+    "url-loader": "^1.0.1",
+    "webpack": "^4.3.0",
+    "webpack-cli": "^2.0.13",
+    "webpack-dev-server": "^3.1.1",
+    "webpack-merge": "^4.1.2",
+    "webpack-server": "^0.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rimraf ./dist/*.* ./dist/*",
+    "build": "npm run clean && ts-node ./config/webpack.prod.ts",
+    "start": "ts-node ./config/webpack.local.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ouyangshan09/fore-end-starter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ouyangshan09/fore-end-starter/issues"
+  },
+  "homepage": "https://github.com/ouyangshan09/fore-end-starter#readme"
+}
