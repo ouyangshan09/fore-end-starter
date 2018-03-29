@@ -21,18 +21,13 @@ const defaultConfig: Configuration = {
                 loader: 'babel-loader',
                 options: {
                     cacheDirectory: true,
-                    'presets': ['env', { 'modules': false }],
+                    'presets': ['env'],
                     'env': {
                         'test': {
                             'presets': ['env']
                         }
-                    },
-                    plugins: [
-                        'syntax-dynamic-import'
-                    ]
+                    }
                 }
-            },{
-                loader: 'awesome-typescript-loader'
             }]
         }, {
             test: /\.s?([ca])ss$/,
@@ -54,7 +49,7 @@ const defaultConfig: Configuration = {
     plugins: [
         new Webpack.DllReferencePlugin({
             context: Config.root,
-            manifest: require(Path.join(Config.root, 'lib/vendor-manifest.jso'))
+            manifest: require(Path.join(Config.root, 'lib/vendor-manifest.json'))
         }),
         new HtmlWebpackPlugin({
             template: Path.join(Config.src, 'index.html'),
