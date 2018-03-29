@@ -26,8 +26,10 @@ const defaultConfig: Configuration = {
                         'test': {
                             'presets': ['env']
                         }
-                    }
-                    // plugins: []
+                    },
+                    plugins: [
+                        'syntax-dynamic-import'
+                    ]
                 }
             },{
                 loader: 'awesome-typescript-loader'
