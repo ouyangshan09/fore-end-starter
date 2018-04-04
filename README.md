@@ -1,4 +1,4 @@
-# 前端项目启动器(包含多语言)
+## 前端项目启动器(包含多语言)
 
 - javascript
 - typescript
@@ -6,6 +6,8 @@
 - react + ts
 - vue + js
 - vue + ts
+
+# 当前react + js (reactjs-starter)
 
 ## 快速开始
 
