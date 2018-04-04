@@ -29,7 +29,12 @@ module.exports = {
                     path.join(config.root, 'node_modules')
                 ],
                 use: ExtractTextPlugin.extract({
-                    use: ['css-loader', 'postcss-loader', 'sass-loader'],
+                    // use: ['css-loader', 'postcss-loader', 'sass-loader'],
+                    use: [
+                        Object.assign({}, {loader: 'css-loader'}, {options: {modules: true, localIdentName: '[hash:base64:4]'}}),
+                        {loader: 'postcss-loader'},
+                        {loader: 'sass-loader'}
+                    ],
                     fallback: 'style-loader'
                 })
             },
