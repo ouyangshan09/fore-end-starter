@@ -7,7 +7,18 @@ const config = require('./config');
 
 module.exports = {
     entry: {
-        vendor: ['lodash', 'moment']
+        vendor: [
+            'classnames',
+            'immutable',
+            'lodash',
+            'moment',
+            'redux',
+            'react',
+            'react-redux',
+            'react-router',
+            'react-router-dom',
+            'react-router-redux'
+        ]
     },
     output: {
         path: path.join(config.root, 'lib'),
