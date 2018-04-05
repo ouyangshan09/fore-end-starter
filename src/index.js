@@ -18,7 +18,9 @@ class Index extends React.PureComponent {
 
     render () {
         return (
-            <div styleName='index' className='index'>Index2</div>
+            <div styleName='index' className='index'>
+                <div className='name'>React</div>
+            </div>
         );
     }
 }
