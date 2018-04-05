@@ -9,21 +9,12 @@
           "presets": [["env"], "react", "stage-0"],
           "plugins": [
                 "transform-decorators-legacy",
-                "syntax-dynamic-import",
-                ["import", {
-                    "libraryName": "antd",
-                    "style": true
-                }]
+                "syntax-dynamic-import"
             ]
         }
     },
     "plugins": [
         "transform-decorators-legacy",
-        "syntax-dynamic-import",
-        ["import", {
-            "libraryName": "antd",
-            "libraryDirectory": "es",
-            "style": true
-        }]
+        "syntax-dynamic-import"
     ]
 }

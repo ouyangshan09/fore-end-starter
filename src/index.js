@@ -1,11 +1,28 @@
-import loadsh from 'lodash';
-// import Styles from './index.scss';
+import React from 'react';
+import ReactDom from 'react-dom';
+import CSSModules from 'react-css-modules';
+import PropTypes from 'prop-types';
+import Styles from './index.scss';
 
-class Test {
-    static default = {
-        stop: ''
+@CSSModules(Styles)
+class Index extends React.PureComponent {
+    static propTypes = {
+        className: PropTypes.string
     };
+
+    static defaultProps = {};
+
+    constructor (props) {
+        super(props);
+    }
+
+    render () {
+        return (
+            <div styleName='index' className='index'>Index2</div>
+        );
+    }
 }
 
-console.log('测试webpakc4.0:', loadsh);
-console.log('测试webpakc4.1', new Test());
+ReactDom.render(<Index />, document.getElementById('app'));
+
+export default Index;
