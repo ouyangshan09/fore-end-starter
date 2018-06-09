@@ -34,21 +34,6 @@ const defaultConfig: Configuration = {
                 }
             }]
         }, {
-            test: /\.(js|jsx)$/,
-            exclude: /(node_modules|lib)/,
-            use: {
-                loader: 'babel-loader',
-                options: {
-                    cacheDirectory: true,
-                    presets: ['env'],
-                    env: {
-                        test: {
-                            presets: ['env']
-                        }
-                    }
-                }
-            }
-        }, {
             test: /\.s?([c|a])ss$/,
             exclude: [
                 Path.join(Config.root, 'public'),
