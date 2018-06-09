@@ -7,6 +7,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './prolyfill';
 
+// 引入Root组件
+
 // const RootComponent: any = (Component: any) => <div>Root</div>
 
 ReactDOM.render(<div>ROOT TEST</div>, document.getElementById('app'));
