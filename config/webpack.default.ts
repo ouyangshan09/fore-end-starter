@@ -22,12 +22,12 @@ const defaultConfig: Configuration = {
                 loader: 'babel-loader',
                 options: {
                     cacheDirectory: true,
-                    'presets': ['env'],
-                    'env': {
-                        'test': {
-                            'presets': ['env']
-                        }
-                    },
+                    'presets': [['env'], 'react'],
+                    // 'env': {
+                    //     'test': {
+                    //         'presets': ['env']
+                    //     }
+                    // },
                     plugins: [
                         'react-hot-loader/babel'
                     ]
