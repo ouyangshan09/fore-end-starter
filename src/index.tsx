@@ -5,6 +5,7 @@
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './prolyfill';
 
 // const RootComponent: any = (Component: any) => <div>Root</div>
 
