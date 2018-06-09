@@ -7,6 +7,7 @@ import Webpack, { Configuration } from 'webpack';
 import Path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
 import Config from './config';
 
 const defaultConfig: Configuration = {
@@ -41,9 +42,43 @@ const defaultConfig: Configuration = {
                 fallback: 'style-loader'
             })
         }, {
-            test: /\.(png|jpg|gif)$/,
+            test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
             loader: 'url-loader',
-            options: { limit: 8192 }
+            options: {
+                limit: 10000,
+                minetype: 'application/font-woff'
+            }
+        }, {
+            test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
+            loader: 'url-loader',
+            options: {
+                limit: 10000,
+                minetype: 'application/font-woff'
+            }
+        }, {
+            test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+            loader: 'url-loader',
+            options: {
+                limit: 10000,
+                minetype: 'application/vnd.ms-fontobject'
+            }
+        }, {
+            test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+            loader: 'url-loader',
+            options: {
+                limit: 10000,
+                minetype: 'image/svg+xml'
+            }
+        }, {
+            test: /\.(png|jpg|jpeg|gif)(\?v=\d+\.\d+\.\d+)?$/i,
+            loader: 'url-loader',
+            options: { limit: 10000 }
+        }, {
+            test: '/\.html?$/',
+            loader: 'file-loader',
+            options: {
+                name: '[name].[ext]'
+            }
         }]
     },
     plugins: [
@@ -59,7 +94,8 @@ const defaultConfig: Configuration = {
             filename: '[name].css',
             disable: false,
             allChunks: true
-        })
+        }),
+        new CaseSensitivePathsPlugin()
     ]
 };
 
