@@ -1,9 +1,8 @@
 /**
  * Created by Ouyang on 2018/3/29.
- * 开发环境配置
+ * Webpack 开发环境配置
  * @author Ouyang
  */
-import Path from 'path';
 import Webpack from 'webpack';
 import Server from 'webpack-dev-server';
 import WebpackMerge from 'webpack-merge';

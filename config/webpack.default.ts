@@ -31,7 +31,7 @@ const defaultConfig: Configuration = {
                 }
             }]
         }, {
-            test: /\.s?([ca])ss$/,
+            test: /\.s?([c|a])ss$/,
             exclude: [
                 Path.join(Config.root, 'public'),
                 Path.join(Config.root, 'node_modules'),
