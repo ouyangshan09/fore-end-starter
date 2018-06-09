@@ -3,9 +3,10 @@
  * 项目入口
  * @author Ouyang
  */
+import './prolyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './prolyfill';
+import Root from './components/Root';
 
 // 引入Root组件
 
