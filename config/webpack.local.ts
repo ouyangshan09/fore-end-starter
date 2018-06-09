@@ -3,6 +3,7 @@
  * 开发环境配置
  * @author Ouyang
  */
+import Path from 'path';
 import Webpack from 'webpack';
 import Server from 'webpack-dev-server';
 import WebpackMerge from 'webpack-merge';
@@ -31,10 +32,11 @@ const server = new Server(Webpack(serverConfig), {
 });
 
 server.listen(Config.port, Config.host, () => {
-    console.log(`ts-starter is running`);
-    Opn(Url.format({
+    const url = Url.format({
         protocol: Config.protocol,
-        port: Config.port,
-        host: Config.host
-    }));
+        host: Config.host + ':' + Config.port
+    })
+    console.log(`ts-starter is running`);
+    console.log(`Please open url:`, url);
+    Opn(url);
 });

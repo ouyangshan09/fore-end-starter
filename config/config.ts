@@ -12,7 +12,7 @@ export default {
     src: Path.join(root, 'src'),
     lib: Path.join(root, 'lib'),
     dist: Path.join(root, 'dist'),
-    port: 80,
+    port: 82,
     protocol: 'http',
     host: 'starter.oy.ecaicn.com'
 };
