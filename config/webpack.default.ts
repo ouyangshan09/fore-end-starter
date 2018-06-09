@@ -12,7 +12,7 @@ import Config from './config';
 
 const defaultConfig: Configuration = {
     resolve: {
-        extensions: ['.ts', '.js', '.json']
+        extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']
     },
     module: {
         rules: [{
@@ -27,9 +27,27 @@ const defaultConfig: Configuration = {
                         'test': {
                             'presets': ['env']
                         }
-                    }
+                    },
+                    plugins: [
+                        'react-hot-loader/babel'
+                    ]
                 }
             }]
+        }, {
+            test: /\.(js|jsx)$/,
+            exclude: /(node_modules|lib)/,
+            use: {
+                loader: 'babel-loader',
+                options: {
+                    cacheDirectory: true,
+                    presets: ['env'],
+                    env: {
+                        test: {
+                            presets: ['env']
+                        }
+                    }
+                }
+            }
         }, {
             test: /\.s?([c|a])ss$/,
             exclude: [
