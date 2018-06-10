@@ -8,9 +8,8 @@ import { createStore, applyMiddleware, Store } from 'redux';
 import { createLogger } from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { Constant } from '../constant';
+import rootReucer from '../reducers';
 // import rootSaga from '../saga';
-
-const rootReucer: any = null;
 
 // 浏览器插件
 const composeEnhancers = composeWithDevTools({
