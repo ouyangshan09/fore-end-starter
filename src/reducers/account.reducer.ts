@@ -4,7 +4,7 @@
 */
 import { Reducer, ReducersMapObject, Action } from 'redux';
 
-const handles: ReducersMapObject = {
+const handles: ReducersMapObject<any, Action> = {
     'TEST_ACCOUNT': (state, action) => {
         console.log('test reducer:', state);
         return state
