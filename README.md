@@ -98,3 +98,6 @@ react                   react项目根目录
 - reselect
 - docker
 - ……
+
+// 2018/06/10
+- 下一步添加 Typescript 函数测试
