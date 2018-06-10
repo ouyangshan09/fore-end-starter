@@ -12,6 +12,9 @@ import {
 import {
     Action as BaseAction
 } from 'redux';
+import {
+    createAction
+} from 'redux-action';
 
 export interface Action<T = any, M = any> extends BaseAction {
     error?: boolean;
@@ -19,7 +22,7 @@ export interface Action<T = any, M = any> extends BaseAction {
     meta?: M;
 }
 
-export function createAction<P, M> (type: string, playLoadCreator: Function = identity, metaCreator?: Function): Function {
+export function createAction1<P, M> (type: string, playLoadCreator: Function = identity, metaCreator?: Function): Function {
     const findPlayLoad = (isNull(playLoadCreator) || playLoadCreator === identity)
         ? identity : (head: any, ...args: Array<any>) => head instanceof Error
         ? head : playLoadCreator(head, ...args);
@@ -56,7 +59,7 @@ interface M1 {
     isLoading?: boolean;
 }
 
-const OUYANG = createAction<P1, M1>('OUYANG', (data: any) => {
+const OUYANG = createAction1<P1, M1>('OUYANG', (data: any) => {
     return {
         name: 'ouyang',
         age: 18
@@ -68,3 +71,14 @@ const OUYANG = createAction<P1, M1>('OUYANG', (data: any) => {
 });
 
 const action: Action<P1, M1> = OUYANG({name: 'ouyang', age: 18}, {isLoading: true});
+
+const OUYANG1 = createAction<P1, M1>('OUYANG1', (data) => {
+    return {
+        name: '',
+        age: 18
+    }
+}, (meta) => {
+    return {
+        isLoading: true
+    }
+})
