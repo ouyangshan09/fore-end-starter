@@ -9,6 +9,13 @@ function* Test (): IterableIterator<any> {
     //
 }
 
-export default function* rootSaga(): SagaIterator {
-    yield fork(Test);
+function* rootSaga (): SagaIterator {
+    //
+}
+
+export default function rootSagaWrap() {
+    return {
+        next: () => rootSaga
+    }
+    // yield fork(Test);
 }

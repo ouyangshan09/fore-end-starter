@@ -41,7 +41,14 @@ const developmentStore = (preloadedState: any = {}) => {
         composeEnhancers(applyMiddleware(...[loggerMiddleware]))
     );
 
-    // sagaMiddleware.run((rootSaga as any));
+    // const helloSaga = () => {
+    //     return {
+    //         next: () => ''
+    //     }
+    // };
+
+    // sagaMiddleware.run(helloSaga);
+    // sagaMiddleware.run(rootSaga);
 
     if ((module as any).hot) {
         (module as any).hot.accept('../reducers', () => {
