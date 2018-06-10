@@ -22,8 +22,8 @@ const BabelLoader: Loader = {
             ], 'react', 'stage-0'],
         plugins: [
             'transform-runtime',
-            'syntax-dynamic-import'
-            // 'react-hot-loader/babel'
+            'syntax-dynamic-import',
+            'react-hot-loader/babel'
         ]
     }
 };
