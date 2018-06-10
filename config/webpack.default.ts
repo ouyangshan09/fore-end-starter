@@ -16,17 +16,14 @@ const BabelLoader: Loader = {
         cacheDirectory: true,
         presets: [
             ['env', {
-                module: false,
-                targets: {
-                    'chrome': 52
-                },
-                debug: true
+                module: false
+                // debug: true
             }
             ], 'react', 'stage-0'],
         plugins: [
             'transform-runtime',
-            'syntax-dynamic-import',
-            'react-hot-loader/babel'
+            'syntax-dynamic-import'
+            // 'react-hot-loader/babel'
         ]
     }
 };
@@ -44,7 +41,7 @@ const defaultConfig: Configuration = {
         rules: [{
             test: /\.(ts|tsx)$/,
             exclude: /(node_modules|lib)/,
-            use: [TsLoader]
+            use: [BabelLoader, TsLoader]
         }, {
             test: /\.s?([c|a])ss$/,
             exclude: [
@@ -97,10 +94,10 @@ const defaultConfig: Configuration = {
         }]
     },
     plugins: [
-        // new Webpack.DllReferencePlugin({
-        //     context: Config.root,
-        //     manifest: require(Path.join(Config.root, 'lib/vendor-manifest.json'))
-        // }),
+        new Webpack.DllReferencePlugin({
+            context: Config.root,
+            manifest: require(Path.join(Config.root, 'lib/vendor-manifest.json'))
+        }),
         new HtmlWebpackPlugin({
             template: Path.join(Config.src, 'index.html'),
             title: 'ts-starter'

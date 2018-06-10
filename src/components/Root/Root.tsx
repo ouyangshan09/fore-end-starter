@@ -17,12 +17,12 @@ interface IProps {
 class Root extends React.PureComponent<IProps> {
     render () {
         return (
-            <LocaleProvider locale={zhCN}>
-                <Router history={this.props.history} children={this.props.children} />
-                {/* <Provider store={this.props.store}>
+            <Router history={this.props.history} children={this.props.children} />
+            // <LocaleProvider locale={zhCN}>
+            //     <Provider store={this.props.store}>
                     
-                </Provider> */}
-            </LocaleProvider>
+            //     </Provider>
+            // </LocaleProvider>
         )
     }
 }

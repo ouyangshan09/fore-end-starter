@@ -17,7 +17,7 @@ Spinner.start();
 const prodConfig: Configuration = WebpackMerge(DefaultConfig, {
     mode: 'production',
     entry: {
-        app: [Path.join(Config.src, 'index.ts')]
+        app: [Path.join(Config.src, 'index.tsx')]
     },
     output: {
         publicPath: '/',

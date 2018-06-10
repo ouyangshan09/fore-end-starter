@@ -10,9 +10,18 @@ import DefaultConfig from './webpack.default';
 import Config from './config';
 import Opn from 'opn';
 import Url from 'url';
+import Path from 'path';
 
 const serverConfig = WebpackMerge(DefaultConfig, {
     mode: 'development',
+    entry: {
+        app: [Path.join(Config.src, 'index.tsx')]
+    },
+    // output: {
+    //     publicPath: '/',
+    //     filename: '[name].ts'
+    // },
+    devtool: 'cheap-module-eval-source-map',
     plugins: [
         new Webpack.HotModuleReplacementPlugin(),
         new Webpack.NamedModulesPlugin()
