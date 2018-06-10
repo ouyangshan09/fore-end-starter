@@ -3,6 +3,7 @@
  * 项目入口
  * @author Ouyang
  */
+import Styles from './index.scss';
 
  class Hello {
      private value1: string = '';
@@ -17,3 +18,4 @@
  }
 
 console.log('Hello ts starter');
+console.log('Index scss object:', Styles);

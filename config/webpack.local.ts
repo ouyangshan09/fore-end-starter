@@ -1,6 +1,6 @@
 /**
  * Created by Ouyang on 2018/3/29.
- * 开发环境配置
+ * Webpack 开发环境配置
  * @author Ouyang
  */
 import Webpack from 'webpack';
@@ -31,10 +31,11 @@ const server = new Server(Webpack(serverConfig), {
 });
 
 server.listen(Config.port, Config.host, () => {
-    console.log(`ts-starter is running`);
-    Opn(Url.format({
+    const url = Url.format({
         protocol: Config.protocol,
-        port: Config.port,
-        host: Config.host
-    }));
+        host: Config.host + ':' + Config.port
+    })
+    console.log(`ts-starter is running`);
+    console.log(`Please open url:`, url);
+    Opn(url);
 });
