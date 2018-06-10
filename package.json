@@ -84,6 +84,7 @@
     "webpack-server": "^0.1.2"
   },
   "devDependencies": {
+    "@types/react-hot-loader": "^4.1.0",
     "@types/redux-devtools-extension": "^2.13.2",
     "@types/redux-logger": "^3.0.6",
     "babel-core": "^6.26.3",
