@@ -19,7 +19,7 @@ export interface Action<T = any, M = any> extends BaseAction {
     meta?: M;
 }
 
-export function createAction<T, M> (type: string, playLoadCreator: Function = identity, metaCreator?: Function): Function {
+export function createAction<P, M> (type: string, playLoadCreator: Function = identity, metaCreator?: Function): Function {
     const findPlayLoad = (isNull(playLoadCreator) || playLoadCreator === identity)
         ? identity : (head: any, ...args: Array<any>) => head instanceof Error
         ? head : playLoadCreator(head, ...args);
@@ -29,7 +29,7 @@ export function createAction<T, M> (type: string, playLoadCreator: Function = id
 
     function actionCreator (head: any, ...args: Array<any>): Action {
         const playLoad = findPlayLoad(head, ...args);
-        const action: Action<T, M> = { type }
+        const action: Action<P, M> = { type }
         if (playLoad instanceof Error) {
             action.error = true;
         }
@@ -56,6 +56,15 @@ interface M1 {
     isLoading?: boolean;
 }
 
-const OUYANG = createAction<P1, M1>('OUYANG');
+const OUYANG = createAction<P1, M1>('OUYANG', (data: any) => {
+    return {
+        name: 'ouyang',
+        age: 18
+    }
+}, (data: any) => {
+    return {
+        isLoading: true
+    }
+});
 
 const action: Action<P1, M1> = OUYANG({name: 'ouyang', age: 18}, {isLoading: true});
