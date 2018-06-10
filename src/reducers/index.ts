@@ -16,9 +16,9 @@ if (getRunTimeEnv() === 'production') {
         account: account
     })
 } else {
-    // rootReducer = combineReducers({
-    //     account: account
-    // })
+    rootReducer = combineReducers({
+        account: account
+    })
 }
 
 export default rootReducer;

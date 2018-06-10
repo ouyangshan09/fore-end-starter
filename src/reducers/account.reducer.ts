@@ -11,7 +11,9 @@ const handles: ReducersMapObject = {
     }
 };
 
-export default function (state: any, action: Action): Reducer {
+export default function (state: any = {test: 'ouyang'}, action: Action): Reducer {
+    console.log('state1:', state);
+    console.log('state2:', action);
     if (handles[action.type]) {
         return handles[action.type](state, action);
     }
