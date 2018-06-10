@@ -3,11 +3,29 @@
  * webpack基础配置
  * @author Ouyang
  */
-import Webpack, { Configuration } from 'webpack';
+import Webpack, { Configuration, Loader } from 'webpack';
 import Path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import Config from './config';
+
+const BabelLoader: Loader = {
+    loader: 'babel-loader',
+    options: {
+        cacheDirectory: true,
+        'presets': ['env'],
+        'env': {
+            'test': {
+                'presets': ['env']
+            }
+        }
+    }
+};
+
+const TsLoader: Loader = {
+    loader: 'ts-loader',
+    options: {}
+}
 
 const defaultConfig: Configuration = {
     resolve: {
@@ -17,18 +35,7 @@ const defaultConfig: Configuration = {
         rules: [{
             test: /\.(ts|tsx)$/,
             exclude: /(node_modules|lib)/,
-            use: [{
-                loader: 'babel-loader',
-                options: {
-                    cacheDirectory: true,
-                    'presets': ['env'],
-                    'env': {
-                        'test': {
-                            'presets': ['env']
-                        }
-                    }
-                }
-            }]
+            use: [TsLoader]
         }, {
             test: /\.s?([ca])ss$/,
             exclude: [

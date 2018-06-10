@@ -4,4 +4,16 @@
  * @author Ouyang
  */
 
+ class Hello {
+     private value1: string = '';
+
+     constructor (value: string) {
+        this.value1 = value;
+     }
+
+     static create() {
+         return 'null';
+     }
+ }
+
 console.log('Hello ts starter');
