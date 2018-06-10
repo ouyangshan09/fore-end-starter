@@ -22,7 +22,7 @@ if (ENV === 'production') {
     const render = (Component: React.ReactNode) => {
         ReactDOM.render(
             <AppContainer>
-                {<Root history={history}><div>Development315554</div></Root>}
+                {<Root history={history}><div>Development</div></Root>}
             </AppContainer>,
             document.getElementById('app')
         )
@@ -32,7 +32,6 @@ if (ENV === 'production') {
 
     if ((module as any).hot) {
         (module as any).hot.accept('./components/Root/Root', () => {
-            console.log('1231');
             render(Root);
         })
     }
