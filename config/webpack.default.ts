@@ -3,12 +3,62 @@
  * webpack基础配置
  * @author Ouyang
  */
-import Webpack, { Configuration } from 'webpack';
+import Webpack, { Configuration, Loader } from 'webpack';
 import Path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
 import Config from './config';
+
+const babelLoader: Loader = {
+    loader: 'babel-loader',
+    options: {
+        cacheDirectory: true,
+        presets: [
+            ['env', {
+                module: false,
+                targets: {
+                    'chrome': 52
+                },
+                debug: true
+            }
+        ], 'react', 'stage-0'],
+        plugins: [
+            'transform-runtime',
+            'syntax-dynamic-import',
+            'react-hot-loader/babel'
+        ]
+    }
+};
+
+const tsLoader: Loader = {
+    loader: 'awesome-typescript-loader',
+    options: {
+        useBabel: true,
+        babelOptions: {
+            babelrc: false,
+            cacheDirectory: true,
+            presets: [
+                ['env', {
+                    module: false,
+                    targets: {
+                        'chrome': 52
+                    },
+                    debug: true
+                }],
+                'react',
+                'stage-0'
+            ],
+            plugins: [
+                'transform-runtime',
+                'syntax-dynamic-import',
+                'react-hot-loader/babel'
+            ]
+        },
+        babelCore: 'babel-core'
+        // useCache: true
+    }
+}
 
 const defaultConfig: Configuration = {
     resolve: {
@@ -18,21 +68,7 @@ const defaultConfig: Configuration = {
         rules: [{
             test: /\.(ts|tsx)$/,
             exclude: /(node_modules|lib)/,
-            use: [{
-                loader: 'babel-loader',
-                options: {
-                    cacheDirectory: true,
-                    'presets': [['env'], 'react'],
-                    // 'env': {
-                    //     'test': {
-                    //         'presets': ['env']
-                    //     }
-                    // },
-                    plugins: [
-                        'react-hot-loader/babel'
-                    ]
-                }
-            }]
+            use: [babelLoader],
         }, {
             test: /\.s?([c|a])ss$/,
             exclude: [
@@ -85,10 +121,10 @@ const defaultConfig: Configuration = {
         }]
     },
     plugins: [
-        new Webpack.DllReferencePlugin({
-            context: Config.root,
-            manifest: require(Path.join(Config.root, 'lib/vendor-manifest.json'))
-        }),
+        // new Webpack.DllReferencePlugin({
+        //     context: Config.root,
+        //     manifest: require(Path.join(Config.root, 'lib/vendor-manifest.json'))
+        // }),
         new HtmlWebpackPlugin({
             template: Path.join(Config.src, 'index.html'),
             title: 'ts-starter'

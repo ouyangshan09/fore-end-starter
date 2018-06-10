@@ -7,11 +7,12 @@ import './prolyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/Root';
-
-// 引入Root组件
+import History from './utils/History';
 
 // const RootComponent: any = (Component: any) => <div>Root</div>
 
-ReactDOM.render(<div>ROOT TEST</div>, document.getElementById('app'));
+const history = History.create();
+
+ReactDOM.render(<Root history={history}><div>Root Test</div></Root>, document.getElementById('app'));
 
 console.log('Hello ts starter');
