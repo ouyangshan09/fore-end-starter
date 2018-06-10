@@ -14,13 +14,15 @@ import {
 } from 'redux';
 import {
     createAction
-} from 'redux-action';
+} from 'redux-actions';
 
 export interface Action<T = any, M = any> extends BaseAction {
     error?: boolean;
     playload?: T;
     meta?: M;
 }
+
+export type ActionFunction<R> = () => R;
 
 export function createAction1<P, M> (type: string, playLoadCreator: Function = identity, metaCreator?: Function): Function {
     const findPlayLoad = (isNull(playLoadCreator) || playLoadCreator === identity)
