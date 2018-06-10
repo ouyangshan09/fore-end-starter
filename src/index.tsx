@@ -7,11 +7,14 @@ import './prolyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/Root';
-import History from './utils/History';
+import Runtime from './tools/runtime';
+import { getRunTimeEnv } from './tools/enviroment';
 import { AppContainer } from 'react-hot-loader';
 
-const ENV = process.env.NODE_ENV;
-const history = History.create();
+const runtime = Runtime();
+const ENV = getRunTimeEnv();
+const history = runtime.history;
+const store = runtime.store;
 
 if (ENV === 'production') {
     ReactDOM.render(

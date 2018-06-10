@@ -67,6 +67,7 @@
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
+    "redux-saga": "^0.16.0",
     "rimraf": "^2.6.2",
     "sass-loader": "^6.0.7",
     "style-loader": "^0.20.3",
@@ -83,8 +84,12 @@
     "webpack-server": "^0.1.2"
   },
   "devDependencies": {
+    "@types/redux-devtools-extension": "^2.13.2",
+    "@types/redux-logger": "^3.0.6",
     "babel-core": "^6.26.3",
     "react-hot-loader": "^4.3.0",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-logger": "^3.0.6",
     "source-map-loader": "^0.2.3"
   },
   "scripts": {
