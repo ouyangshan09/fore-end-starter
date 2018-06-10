@@ -82,3 +82,5 @@ const OUYANG1 = createAction<P1, M1>('OUYANG1', (data) => {
         isLoading: true
     }
 })
+
+OUYANG1({name: 123}) 
