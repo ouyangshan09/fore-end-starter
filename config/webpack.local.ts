@@ -3,7 +3,7 @@
  * Webpack 开发环境配置
  * @author Ouyang
  */
-import Webpack from 'webpack';
+import Webpack, { Configuration } from 'webpack';
 import Server from 'webpack-dev-server';
 import WebpackMerge from 'webpack-merge';
 import DefaultConfig from './webpack.default';
@@ -15,7 +15,12 @@ import Path from 'path';
 const serverConfig = WebpackMerge(DefaultConfig, {
     mode: 'development',
     entry: {
-        app: [Path.join(Config.src, 'index.tsx')]
+        app: [
+            'react-hot-loader/patch',
+            'webpack-dev-server/client?' + Url.format({protocol: Config.protocol, host: Config.host + ':' + Config.port}),
+            'webpack/hot/dev-server',
+            Path.join(Config.src, 'index.tsx')
+        ]
     },
     // output: {
     //     publicPath: '/',
@@ -23,13 +28,21 @@ const serverConfig = WebpackMerge(DefaultConfig, {
     // },
     devtool: 'cheap-module-eval-source-map',
     plugins: [
-        new Webpack.HotModuleReplacementPlugin(),
-        new Webpack.NamedModulesPlugin()
+        new Webpack.NamedModulesPlugin(),
+        new Webpack.HotModuleReplacementPlugin()
     ]
 });
 
+// const entry: any = serverConfig.entry;
+// entry.app.unshift(
+//     'react-hot-loader/patch',
+//     'webpack-dev-server/client?' + Url.format({protocol: Config.protocol, host: Config.host + ':' + Config.port}),
+//     'webpack/hot/dev-server'
+// )
+
 const server = new Server(Webpack(serverConfig), {
     historyApiFallback: true,
+    inline: true,
     compress: true,
     hot: true,
     publicPath: '/',

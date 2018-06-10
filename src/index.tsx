@@ -8,11 +8,35 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/Root';
 import History from './utils/History';
+import { AppContainer } from 'react-hot-loader';
 
-// const RootComponent: any = (Component: any) => <div>Root</div>
-
+const ENV = process.env.NODE_ENV;
 const history = History.create();
 
-ReactDOM.render(<Root history={history}><div>Root Test</div></Root>, document.getElementById('app'));
+if (ENV === 'production') {
+    ReactDOM.render(
+        <Root history={history}><div>Production</div></Root>,
+        document.getElementById('app')
+    )
+} else {
+    const render = (Component: React.ReactNode) => {
+        ReactDOM.render(
+            <AppContainer>
+                {<Root history={history}><div>Development315554</div></Root>}
+            </AppContainer>,
+            document.getElementById('app')
+        )
+    }
 
-console.log('Hello ts starter');
+    render(Root);
+
+    if ((module as any).hot) {
+        (module as any).hot.accept('./components/Root/Root', () => {
+            console.log('1231');
+            render(Root);
+        })
+    }
+    console.log('module:', module);
+}
+
+// ReactDOM.render(<Root history={history}><div>Root Test</div></Root>, document.getElementById('app'));

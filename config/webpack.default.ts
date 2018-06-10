@@ -8,6 +8,7 @@ import Path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import Config from './config';
 
 const BabelLoader: Loader = {
@@ -30,7 +31,11 @@ const BabelLoader: Loader = {
 
 const TsLoader: Loader = {
     loader: 'ts-loader',
-    options: {}
+    options: {
+        // 启动热更新
+        // transpileOnly: true
+        happyPackMode: true
+    },
 }
 
 const defaultConfig: Configuration = {
@@ -41,7 +46,11 @@ const defaultConfig: Configuration = {
         rules: [{
             test: /\.(ts|tsx)$/,
             exclude: /(node_modules|lib)/,
-            use: [BabelLoader, TsLoader]
+            use: [TsLoader]
+        }, {
+            enforce: 'pre',
+            test: /\.js$/,
+            loader: 'source-map-loader'
         }, {
             test: /\.s?([c|a])ss$/,
             exclude: [
@@ -107,7 +116,11 @@ const defaultConfig: Configuration = {
             disable: false,
             allChunks: true
         }),
-        new CaseSensitivePathsPlugin()
+        new CaseSensitivePathsPlugin(),
+        new ForkTsCheckerWebpackPlugin({
+            checkSyntacticErrors: true,
+            watch: ['./src']
+        })
     ]
 };
 
