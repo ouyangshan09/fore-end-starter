@@ -10,7 +10,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
 import Config from './config';
 
-const babelLoader: Loader = {
+const BabelLoader: Loader = {
     loader: 'babel-loader',
     options: {
         cacheDirectory: true,
@@ -22,7 +22,7 @@ const babelLoader: Loader = {
                 },
                 debug: true
             }
-        ], 'react', 'stage-0'],
+            ], 'react', 'stage-0'],
         plugins: [
             'transform-runtime',
             'syntax-dynamic-import',
@@ -31,33 +31,9 @@ const babelLoader: Loader = {
     }
 };
 
-const tsLoader: Loader = {
-    loader: 'awesome-typescript-loader',
-    options: {
-        useBabel: true,
-        babelOptions: {
-            babelrc: false,
-            cacheDirectory: true,
-            presets: [
-                ['env', {
-                    module: false,
-                    targets: {
-                        'chrome': 52
-                    },
-                    debug: true
-                }],
-                'react',
-                'stage-0'
-            ],
-            plugins: [
-                'transform-runtime',
-                'syntax-dynamic-import',
-                'react-hot-loader/babel'
-            ]
-        },
-        babelCore: 'babel-core'
-        // useCache: true
-    }
+const TsLoader: Loader = {
+    loader: 'ts-loader',
+    options: {}
 }
 
 const defaultConfig: Configuration = {
@@ -68,7 +44,7 @@ const defaultConfig: Configuration = {
         rules: [{
             test: /\.(ts|tsx)$/,
             exclude: /(node_modules|lib)/,
-            use: [babelLoader],
+            use: [TsLoader]
         }, {
             test: /\.s?([c|a])ss$/,
             exclude: [
