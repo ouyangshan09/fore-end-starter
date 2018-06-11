@@ -65,7 +65,7 @@
     "ts-jest": "^20.0.14"
   },
   "scripts": {
-    "test": "jest",
+    "test": "ts-node ./config/jest.ts",
     "clean": "rimraf ./dist/*.* ./dist/*",
     "clean:lib": "rimraf ./lib/*.* ./lib/*",
     "build": "npm run clean && ts-node ./config/webpack.prod.ts",

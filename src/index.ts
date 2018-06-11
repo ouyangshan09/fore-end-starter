@@ -5,7 +5,7 @@
  */
 import Styles from './index.scss';
 
- class Hello {
+class Hello {
      private value1: string = '';
 
      constructor (value: string) {
