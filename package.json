@@ -51,7 +51,6 @@
     "history": "^4.7.2",
     "html-webpack-plugin": "^3.1.0",
     "immutable": "^3.8.2",
-    "jest": "^22.4.3",
     "js-cookie": "^2.2.0",
     "jsencrypt": "^2.3.1",
     "less": "^3.0.1",
@@ -86,19 +85,21 @@
     "webpack-server": "^0.1.2"
   },
   "devDependencies": {
-    "@types/jest": "^23.0.0",
     "@types/react-hot-loader": "^4.1.0",
     "@types/redux-devtools-extension": "^2.13.2",
     "@types/redux-logger": "^3.0.6",
+    "@types/jest": "^20.0.8",
     "babel-core": "^6.26.3",
     "react-hot-loader": "^4.3.0",
     "redux-devtools-extension": "^2.13.2",
     "redux-logger": "^3.0.6",
     "source-map-loader": "^0.2.3",
-    "ts-jest": "^22.4.6"
+    "babel-jest": "^20.0.3",
+    "jest": "^20.0.4",
+    "ts-jest": "^20.0.14"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "ts-node ./config/jest.ts",
     "clean": "rimraf ./dist/*.* ./dist/*",
     "clean:lib": "rimraf ./lib/*.* ./lib/*",
     "build": "npm run clean && ts-node ./config/webpack.prod.ts",
