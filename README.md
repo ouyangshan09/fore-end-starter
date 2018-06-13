@@ -92,12 +92,12 @@ react                   react项目根目录
 ```
 
 ### 具备特征
-
+- typescript
+- react
+- jest
+- hot-replace
 
 ### 待添加
 - reselect
 - docker
 - ……
-
-// 2018/06/10
-- 下一步添加 Typescript 函数测试
