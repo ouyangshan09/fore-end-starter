@@ -9,5 +9,5 @@ function add  (a: number, b: number): number {
 
 test('adds 1 + 2 to equal 3', () => {
     // console.log('hello world');
-    expect(add(1, 2)).toBe(4);
+    expect(add(4, 5)).toBe(9);
 })
