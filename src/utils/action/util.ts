@@ -61,28 +61,28 @@ interface M1 {
     isLoading?: boolean;
 }
 
-const OUYANG = createAction1<P1, M1>('OUYANG', (data: any) => {
-    return {
-        name: 'ouyang',
-        age: 18
-    }
-}, (data: any) => {
-    return {
-        isLoading: true
-    }
-});
+// const OUYANG = createAction1<P1, M1>('OUYANG', (data: any) => {
+//     return {
+//         name: 'ouyang',
+//         age: 18
+//     }
+// }, (data: any) => {
+//     return {
+//         isLoading: true
+//     }
+// });
 
-const action: Action<P1, M1> = OUYANG({name: 'ouyang', age: 18}, {isLoading: true});
+// const action: Action<P1, M1> = OUYANG({name: 'ouyang', age: 18}, {isLoading: true});
 
-const OUYANG1 = createAction<P1, M1>('OUYANG1', (data) => {
-    return {
-        name: '',
-        age: 18
-    }
-}, (meta) => {
-    return {
-        isLoading: true
-    }
-})
+// const OUYANG1 = createAction<P1, M1>('OUYANG1', (data) => {
+//     return {
+//         name: '',
+//         age: 18
+//     }
+// }, (meta) => {
+//     return {
+//         isLoading: true
+//     }
+// })
 
-OUYANG1({name: 123}) 
+// OUYANG1({name: 123}) 
