@@ -16,6 +16,4 @@ export interface IAccount {
     visitor: Visitor;
 }
 
-export interface IAccountPayload {
-
-}
+export type IAccountPayload = {};
