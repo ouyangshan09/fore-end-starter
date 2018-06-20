@@ -10,19 +10,18 @@ import { Router } from 'react-router';
 import { History } from 'history';
 
 interface IProps {
-    store?: Store<any> | null,
+    store?: Store<any>,
     history: History
 }
 
 class Root extends React.PureComponent<IProps> {
     render () {
         return (
-            <Router history={this.props.history} children={this.props.children} />
-            // <LocaleProvider locale={zhCN}>
-            //     <Provider store={this.props.store}>
-                    
-            //     </Provider>
-            // </LocaleProvider>
+            <LocaleProvider locale={zhCN}>
+                <Provider store={this.props.store}>
+                    <Router history={this.props.history} children={this.props.children} />
+                </Provider>
+            </LocaleProvider>
         )
     }
 }

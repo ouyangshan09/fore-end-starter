@@ -2,23 +2,22 @@
  * 默认导出所有Reducer
  * @author Ouyang
 */
-import { combineReducers, Reducer } from 'redux';
-import { getRunTimeEnv } from '../tools/enviroment';
+import { combineReducers } from 'redux';
 import account from '../reducers/account.reducer';
+// import { getRunTimeEnv } from '../tools/enviroment';
 
-let rootReducer: Reducer = (state, action) => {
-    console.log('reducer state:', state);
-    return state;
-};
+let rootReducer = combineReducers({
+    account: account
+})
 
-if (getRunTimeEnv() === 'production') {
-    rootReducer = combineReducers({
-        account: account
-    })
-} else {
-    rootReducer = combineReducers({
-        account: account
-    })
-}
+// if (getRunTimeEnv() === 'production') {
+//     rootReducer = combineReducers({
+//         account: account
+//     })
+// } else {
+//     rootReducer = combineReducers({
+//         account: account
+//     });
+// }
 
 export default rootReducer;

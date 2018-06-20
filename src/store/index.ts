@@ -4,11 +4,11 @@
 */
 
 import { createStore, applyMiddleware, Store } from 'redux';
-// import createSaga from 'redux-saga';
-import { createLogger } from 'redux-logger';
+import { createLogger, logger } from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { Constant } from '../constant';
 import rootReucer from '../reducers';
+// import createSaga from 'redux-saga';
 // import rootSaga from '../saga';
 
 // 浏览器插件
@@ -28,16 +28,19 @@ const loggerMiddleware = createLogger({
 });
 
 const productionStore = (preloadedState: any = {}) => createStore(
-    rootReucer, // rootReucer
-    preloadedState, // 
+    rootReucer,
+    preloadedState,
     // applyMiddleware(...[sagaMiddleware])
 );
 
 const developmentStore = (preloadedState: any = {}) => {
+    const enhancer = composeEnhancers(
+        applyMiddleware(...[loggerMiddleware])
+    )
     const store = createStore(
         rootReucer,
         preloadedState,
-        composeEnhancers(applyMiddleware(...[loggerMiddleware]))
+        enhancer
     );
 
     // const helloSaga = () => {

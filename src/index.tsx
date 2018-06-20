@@ -16,6 +16,14 @@ const ENV = getRunTimeEnv();
 const history = runtime.history;
 const store = runtime.store;
 
+class Test extends React.PureComponent<any> {
+    render () {
+        return (
+            <div>TestDevelopment</div>
+        )
+    }
+}
+
 if (ENV === 'production') {
     ReactDOM.render(
         <Root history={history}><div>Production</div></Root>,
@@ -25,7 +33,11 @@ if (ENV === 'production') {
     const render = (Component: React.ReactNode) => {
         ReactDOM.render(
             <AppContainer>
-                {<Root history={history}><div>Development</div></Root>}
+                {
+                <Root history={history} store={store}>
+                    <Test />
+                </Root>
+                }
             </AppContainer>,
             document.getElementById('app')
         )
@@ -38,7 +50,4 @@ if (ENV === 'production') {
             render(Root);
         })
     }
-    console.log('module:', module);
 }
-
-// ReactDOM.render(<Root history={history}><div>Root Test</div></Root>, document.getElementById('app'));
