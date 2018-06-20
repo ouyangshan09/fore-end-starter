@@ -3,12 +3,10 @@
  * @author Ouyang
 */
 import {
-    Reducer,
     ReducersMapObject,
     Action
 } from 'redux';
 import {
-    handleAction,
     handleActions,
     ReducerMap
 } from 'redux-actions';
