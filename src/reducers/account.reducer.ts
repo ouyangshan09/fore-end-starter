@@ -10,14 +10,16 @@ import {
     handleActions,
     ReducerMap
 } from 'redux-actions';
+import Account, {
+    IAccount,
+    IAccountPayload
+} from '../store/account.store';
 
-const handles: ReducerMap<any, any> = {
+const handles: ReducerMap<IAccount, IAccountPayload> = {
     ['TEST_ACCOUNT']: (state, action) => {
         console.log('test_account:', state)
         return state;
     }
 };
 
-export default handleActions<any, any>(handles, {
-    name: 'ouyang'
-});
+export default handleActions<IAccount, IAccountPayload>(handles, Account);
