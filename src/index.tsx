@@ -10,19 +10,12 @@ import Root from './components/Root';
 import Runtime from './tools/runtime';
 import { getRunTimeEnv } from './tools/enviroment';
 import { AppContainer } from 'react-hot-loader';
+import IndexRoute from './routes';
 
 const runtime = Runtime();
 const ENV = getRunTimeEnv();
 const history = runtime.history;
 const store = runtime.store;
-
-class Test extends React.PureComponent<any> {
-    render () {
-        return (
-            <div>TestDevelopment</div>
-        )
-    }
-}
 
 if (ENV === 'production') {
     ReactDOM.render(
@@ -35,7 +28,7 @@ if (ENV === 'production') {
             <AppContainer>
                 {
                 <Root history={history} store={store}>
-                    <Test />
+                    <IndexRoute />
                 </Root>
                 }
             </AppContainer>,
