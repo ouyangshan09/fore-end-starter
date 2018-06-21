@@ -1,15 +1,16 @@
 /**
- * 页面入口
+ * 路由控制器
  * @author Ouyang
 */
+
 import React from 'react';
-import {  Route } from 'react-router';
+import { Route } from 'react-router';
 
 interface IProps {
     //
 }
 
-class IndexRoute extends React.PureComponent<IProps, any> {
+class RouteControl extends React.PureComponent<IProps, any> {
     static displayName = 'IndexRoute';
 
     constructor(props: IProps) {
@@ -27,4 +28,4 @@ class IndexRoute extends React.PureComponent<IProps, any> {
     }
 }
 
-export default IndexRoute;
+export default RouteControl;
