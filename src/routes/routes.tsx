@@ -4,10 +4,82 @@
 */
 
 import React from 'react';
-import { Route } from 'react-router';
+import { Route, withRouter, RouteComponentProps } from 'react-router';
+import AuthorizedRoute from '../components/AuthorizedRoute';
 
-interface IProps {
+interface IProps extends RouteComponentProps<any> {
     //
+}
+
+class A extends React.PureComponent {
+    constructor (props: any) {
+        super(props)
+        console.log('A ctr');
+    }
+
+    componentWillMount () {
+        console.log('A Component WillMount');
+    }
+
+    componentDidMount () {
+        console.log('A Component DidMount');
+    }
+
+    render () {
+        return (
+            <div><B /></div>
+        )
+    }
+}
+
+class B extends React.PureComponent {
+    constructor(props: any) {
+        super(props)
+        console.log('B ctr');
+    }
+
+    componentWillMount() {
+        console.log('B Component WillMount');
+    }
+
+    componentDidMount() {
+        console.log('B Component DidMount');
+    }
+
+    render() {
+        return (
+            <div><C /></div>
+        )
+    }
+}
+
+class C extends React.PureComponent {
+    constructor(props: any) {
+        super(props)
+        console.log('C ctr');
+    }
+
+    componentWillMount() {
+        console.log('C Component WillMount');
+    }
+
+    componentDidMount() {
+        console.log('C Component DidMount');
+    }
+
+    render() {
+        return (
+            <div>C</div>
+        )
+    }
+}
+
+class D extends React.PureComponent {
+    render () {
+        return (
+            <div>D</div>
+        )
+    }
 }
 
 class RouteControl extends React.PureComponent<IProps, any> {
@@ -21,11 +93,11 @@ class RouteControl extends React.PureComponent<IProps, any> {
     render() {
         return (
             <div>
-                <Route exact path='/' component={() => <div>根路由</div>}></Route>
-                <Route path='/account' component={() => <div>账号路由</div>} ></Route>
+                <AuthorizedRoute exact path='/' component={A} />
+                <Route path='/account' component={D} />
             </div>
         )
     }
 }
 
-export default RouteControl;
+export default withRouter<IProps>(RouteControl);

@@ -10,7 +10,7 @@ import Root from './components/Root';
 import Runtime from './tools/runtime';
 import { getRunTimeEnv } from './tools/enviroment';
 import { AppContainer } from 'react-hot-loader';
-import IndexRoute from './routes';
+import Routes from './routes';
 
 const runtime = Runtime();
 const ENV = getRunTimeEnv();
@@ -23,12 +23,12 @@ if (ENV === 'production') {
         document.getElementById('app')
     )
 } else {
-    const render = (Component: React.ReactNode) => {
+    const render = (Component: React.ComponentClass<any>) => {
         ReactDOM.render(
             <AppContainer>
                 {
                 <Root history={history} store={store}>
-                    <IndexRoute />
+                    <Routes />
                 </Root>
                 }
             </AppContainer>,
