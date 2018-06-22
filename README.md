@@ -101,3 +101,15 @@ react                   react项目根目录
 - reselect
 - docker
 - ……
+
+## 后端
+Node.js - typescript
+MySQL
+Nginx
+
+## 域名购买
+Cenarius.cn 塞纳留斯
+Archimonde.cn 阿克蒙德 
+Nefarian.cn 奈法利安
+antonidas.cn 安东尼达斯
+ 
