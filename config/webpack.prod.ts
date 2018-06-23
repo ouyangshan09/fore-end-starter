@@ -22,8 +22,8 @@ const prodConfig: Configuration = WebpackMerge(DefaultConfig, {
     output: {
         publicPath: '/',
         path: Config.dist,
-        filename: '[name].[hash].ts',
-        chunkFilename: '[id].[chunkhash].chunk.ts'
+        filename: '[name].[hash].js',
+        chunkFilename: '[id].[chunkhash].chunk.js'
     }
 });
 
