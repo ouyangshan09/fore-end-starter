@@ -11,6 +11,7 @@ import Config from './config';
 import Opn from 'opn';
 import Url from 'url';
 import Path from 'path';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 
 const serverConfig = WebpackMerge(DefaultConfig, {
     mode: 'development',
@@ -29,7 +30,11 @@ const serverConfig = WebpackMerge(DefaultConfig, {
     devtool: 'cheap-module-eval-source-map',
     plugins: [
         new Webpack.NamedModulesPlugin(),
-        new Webpack.HotModuleReplacementPlugin()
+        new Webpack.HotModuleReplacementPlugin(),
+        new ForkTsCheckerWebpackPlugin({
+            checkSyntacticErrors: true,
+            watch: ['./src']
+        })
     ]
 });
 

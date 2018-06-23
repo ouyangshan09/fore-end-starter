@@ -8,7 +8,6 @@ import Path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import Config from './config';
 
 const BabelLoader: Loader = {
@@ -116,11 +115,7 @@ const defaultConfig: Configuration = {
             disable: false,
             allChunks: true
         }),
-        new CaseSensitivePathsPlugin(),
-        new ForkTsCheckerWebpackPlugin({
-            checkSyntacticErrors: true,
-            watch: ['./src']
-        })
+        new CaseSensitivePathsPlugin()
     ]
 };
 
