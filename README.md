@@ -99,7 +99,7 @@ react                   react项目根目录
 
 ### 待添加
 - reselect
-- docker
+- docker 部署nginx服务
 - ……
 
 ## 后端
