@@ -1,20 +1,27 @@
 import React from 'react';
 
-interface IProps {
+export interface IProps {
     name?: string;
     gridFriend: string;
 };
 
-class TestComponent extends React.PureComponent<IProps> {
+class TestComponent extends React.PureComponent<IProps, any> {
     static displayName = 'TestComponent';
 
-    static defualtProps = {};
+    static defualtProps = {
+        gridFriend: 'lc'
+    };
+
+    constructor (props: IProps) {
+        super(props);
+        this.state = {};
+    }
 
     render () {
         return (
             <div>
-                <span>{this.props.name}</span>
-                <span>{this.props.gridFriend}</span>
+                {this.props.name && <span>{this.props.name}</span>}
+                {this.props.gridFriend && <span>{this.props.gridFriend}</span>}
             </div>
         )
     }
