@@ -6,6 +6,7 @@
 import React from 'react';
 import { Route, withRouter, RouteComponentProps } from 'react-router';
 import AuthorizedRoute from '../components/AuthorizedRoute';
+import AccountAuthorized from './account';
 
 interface IProps extends RouteComponentProps<any> {
     //
@@ -94,7 +95,7 @@ class RouteControl extends React.PureComponent<IProps, any> {
         return (
             <div>
                 <AuthorizedRoute exact path='/' component={A} />
-                <Route path='/account' component={D} />
+                <Route path='/account' component={AccountAuthorized} />
             </div>
         )
     }
