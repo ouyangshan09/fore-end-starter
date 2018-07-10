@@ -5,7 +5,21 @@
 # RUN npm install --registry=https://registry.npm.taobao.org
 # EXPOSE 9088
 # CMD npm run build
-FROM nginx:latest
-COPY ./dist /usr/share/nginx/html
-EXPOSE 80
+# FROM nginx:latest
+# COPY ./dist /usr/share/nginx/html
+# EXPOSE 80
 # CMD nginx -g "daemon off"
+
+## 编译环境
+FROM node:8.9.4 as builder
+ADD . /app
+WORKDIR /app
+RUN npm install --registry=https://registry.npm.taobao.org
+RUN npm run dll
+RUN npm run build
+
+# 服务器环境
+FROM nginx:latest
+COPY --from=builder /app/dist /usr/share/nginx/html
+EXPOSE 80
+# CMD ["nginx"]
