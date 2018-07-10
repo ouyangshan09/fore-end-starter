@@ -10,6 +10,8 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
 import Config from './config';
 
+const localIdentName = '[name]_[local]_[hash:base64:3]';
+
 const BabelLoader: Loader = {
     loader: 'babel-loader',
     options: {
@@ -29,7 +31,7 @@ const BabelLoader: Loader = {
                         'syntax': 'postcss-scss'
                     }
                 },
-                'generateScopedName': '[name]_[local]_[hash:base64:3]'
+                'generateScopedName': localIdentName
             }]
         ]
     }
@@ -42,6 +44,13 @@ const TsLoader: Loader = {
         // transpileOnly: true
         happyPackMode: true
     },
+}
+
+const cssLoader: Loader = {
+    loader: 'css-loader',
+    options: {
+        
+    }
 }
 
 const defaultConfig: Configuration = {
@@ -65,7 +74,7 @@ const defaultConfig: Configuration = {
                 Path.join(Config.root, 'lib')
             ],
             use: ExtractTextPlugin.extract({
-                use: ['css-loader', 'postcss-loader', 'sass-loader'],
+                use: ['css-loader', '', 'postcss-loader', 'sass-loader'],
                 fallback: 'style-loader'
             })
         }, {
