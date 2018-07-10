@@ -19,7 +19,9 @@ const store = runtime.store;
 
 if (ENV === 'production') {
     ReactDOM.render(
-        <Root history={history}><div>Production</div></Root>,
+        <Root history={history} store={store}>
+            <Routes />
+        </Root>,
         document.getElementById('app')
     )
 } else {
