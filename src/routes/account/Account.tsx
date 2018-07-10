@@ -19,8 +19,16 @@ class Account extends React.PureComponent<IProps, any> {
     }
 
     render () {
+        const wrapProps = {
+            styleName: 'Account',
+            className: 'Account'
+        }
         return (
-            <div>account</div>
+            <div {...wrapProps}>
+                <span className='inner'>
+                    account2
+                </span>
+            </div>
         )
     }
 }

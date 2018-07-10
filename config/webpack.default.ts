@@ -23,7 +23,14 @@ const BabelLoader: Loader = {
         plugins: [
             'transform-runtime',
             'syntax-dynamic-import',
-            'react-hot-loader/babel'
+            ['react-css-modules', {
+                'filetypes': {
+                    '.scss': {
+                        'syntax': 'postcss-scss'
+                    }
+                },
+                'generateScopedName': '[name]_[local]_[hash:base64:3]'
+            }]
         ]
     }
 };
@@ -45,7 +52,7 @@ const defaultConfig: Configuration = {
         rules: [{
             test: /\.(ts|tsx)$/,
             exclude: /(node_modules|lib)/,
-            use: [TsLoader]
+            use: [BabelLoader, TsLoader]
         }, {
             enforce: 'pre',
             test: /\.js$/,
