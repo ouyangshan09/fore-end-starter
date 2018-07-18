@@ -4,12 +4,14 @@
  * @version 1.0
 */
 import React from 'react';
-import './Account.scss';
+import CSSModules from 'react-css-modules';
+import Styles from './Account.scss';
 
 interface IProps {
 
 }
 
+@CSSModules(Styles)
 class Account extends React.PureComponent<IProps, any> {
     static displayName = 'Account';
 
@@ -24,10 +26,10 @@ class Account extends React.PureComponent<IProps, any> {
             className: 'Account'
         }
         return (
-            <div {...wrapProps}>
-                <span className='inner'>
+            <div styleName='Account' className='Account'>
+                <div className='inner'>
                     account2
-                </span>
+                </div>
             </div>
         )
     }

@@ -47,9 +47,28 @@ const TsLoader: Loader = {
 }
 
 const cssLoader: Loader = {
-    loader: 'css-loader',
+    loader: 'typings-for-css-modules-loader',
     options: {
-        
+        module: true,
+        localIdentName,
+        sourceMap: true,
+        // namedExport: true,
+        // camelCase: true,
+        minimize: false,
+    }
+}
+
+const postcssLoader: Loader = {
+    loader: 'postcss-loader',
+    options: {
+        sourceMap: 'inline'
+    }
+}
+
+const sassLoader: Loader = {
+    loader: 'sass-loader',
+    options: {
+        sourceMap: true
     }
 }
 
@@ -59,9 +78,9 @@ const defaultConfig: Configuration = {
     },
     module: {
         rules: [{
-            test: /\.(ts|tsx)$/,
+            test: /\.ts(x?)$/,
             exclude: /(node_modules|lib)/,
-            use: [BabelLoader, TsLoader]
+            use: [TsLoader]
         }, {
             enforce: 'pre',
             test: /\.js$/,
@@ -74,7 +93,11 @@ const defaultConfig: Configuration = {
                 Path.join(Config.root, 'lib')
             ],
             use: ExtractTextPlugin.extract({
-                use: ['css-loader', 'postcss-loader', 'sass-loader'],
+                use: [
+                    cssLoader,
+                    postcssLoader,
+                    sassLoader
+                ],
                 fallback: 'style-loader'
             })
         }, {
