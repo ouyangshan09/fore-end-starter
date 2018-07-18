@@ -80,7 +80,11 @@ const defaultConfig: Configuration = {
         rules: [{
             test: /\.ts(x?)$/,
             exclude: /(node_modules|lib)/,
-            use: [TsLoader]
+            use: [BabelLoader, TsLoader]
+        }, {
+            test: /\.js$/,
+            exclude: /(node_modules|lib)/,
+            use: [BabelLoader]
         }, {
             enforce: 'pre',
             test: /\.js$/,
