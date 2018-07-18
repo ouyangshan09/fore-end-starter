@@ -4,15 +4,15 @@
  * @version 1.0
 */
 import React from 'react';
-import './Account.scss';
-// import CSSModules from 'react-css-modules';
-// import Styles from './Account.scss';
+import CSSModules from 'react-css-modules';
+import Styles from './Account.scss';
+// import './Account.scss';
 
 interface IProps {
 
 }
 
-// @CSSModules(Styles)
+@CSSModules(Styles)
 class Account extends React.PureComponent<IProps, any> {
     static displayName = 'Account';
 

@@ -15,7 +15,17 @@ Spinner.start();
 
 const dllConfig: Configuration = {
     entry: {
-        vendor: ['lodash', 'moment']
+        vendor: [
+            'lodash',
+            'moment',
+            'react',
+            'react-dom',
+            'react-redux',
+            'react-router',
+            'react-router-dom',
+            'redux',
+            'redux-actions'
+        ]
     },
     output: {
         path: Path.join(Config.root, 'lib'),

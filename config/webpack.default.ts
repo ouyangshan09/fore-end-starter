@@ -40,8 +40,9 @@ const BabelLoader: Loader = {
 const TsLoader: Loader = {
     loader: 'ts-loader',
     options: {
+        // 加快编译速度，取消静态类型检查
+        // transpileOnly: true,
         // 启动热更新
-        // transpileOnly: true
         happyPackMode: true
     },
 }
@@ -80,11 +81,7 @@ const defaultConfig: Configuration = {
         rules: [{
             test: /\.ts(x?)$/,
             exclude: /(node_modules|lib)/,
-            use: [BabelLoader, TsLoader]
-        }, {
-            test: /\.js$/,
-            exclude: /(node_modules|lib)/,
-            use: [BabelLoader]
+            use: [TsLoader]
         }, {
             enforce: 'pre',
             test: /\.js$/,
