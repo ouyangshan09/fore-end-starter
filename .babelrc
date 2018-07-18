@@ -6,13 +6,8 @@
     ],
     "env": {
         "test": {
-<<<<<<< HEAD
-          "presets": [["env"], "react", "stage-0"],
-          "plugins": [
-=======
           "presets": [["env"], "stage-0"],
             "plugins": [
->>>>>>> 1a00f5c37f143f5523dc1cdcbf6c4f146f375b16
                 "transform-decorators-legacy",
                 "syntax-dynamic-import"
             ]
