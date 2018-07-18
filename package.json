@@ -19,7 +19,15 @@
     "lodash": "^4.17.5",
     "moment": "^2.21.0",
     "ts-node": "^5.0.1",
-    "typescript": "2.8.4"
+    "typescript": "2.8.4",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "redux": "^3.7.2",
+    "redux-actions": "^2.4.0",
+    "redux-saga": "^0.16.0"
   },
   "devDependencies": {
     "@types/jest": "^20.0.8",
