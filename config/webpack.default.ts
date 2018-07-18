@@ -74,7 +74,7 @@ const defaultConfig: Configuration = {
                 Path.join(Config.root, 'lib')
             ],
             use: ExtractTextPlugin.extract({
-                use: ['css-loader', '', 'postcss-loader', 'sass-loader'],
+                use: ['css-loader', 'postcss-loader', 'sass-loader'],
                 fallback: 'style-loader'
             })
         }, {
