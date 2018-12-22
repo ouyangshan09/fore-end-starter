@@ -170,7 +170,7 @@ const defaultConfig: Configuration = {
         }),
         new ExtractTextPlugin({
             filename: '[name].[contenthash].css',
-            disable: true,
+            disable: process.env.NODE_ENV === 'development',
             allChunks: true
         }),
         new CaseSensitivePathsPlugin()

@@ -30,6 +30,7 @@ const prodConfig: Configuration = WebpackMerge(DefaultConfig, {
 Rm(Config.dist, err => {
     if (err) throw err;
     Webpack(prodConfig, (err, status) => {
+        console.log('production mode:', process.env.NODE_ENV);
         Spinner.stop();
         if (err) throw err;
         process.stdout.write(status.toString({
