@@ -24,7 +24,7 @@ class Account extends React.PureComponent<IProps, any> {
     render () {
         return (
             <div styleName='Account' className='Account'>
-                <div className='inner'>
+                <div className='wrapper'>
                     account2
                 </div>
             </div>
