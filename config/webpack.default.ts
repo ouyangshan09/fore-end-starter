@@ -9,6 +9,7 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
+import tsImportPluginFactory from 'ts-import-plugin';
 import Config from './config';
 
 const localIdentName = '[name]_[local]_[hash:base64:3]';
@@ -45,7 +46,14 @@ const TsLoader: Loader = {
         // 加快编译速度，取消静态类型检查
         // transpileOnly: true,
         // 启动热更新
-        happyPackMode: true
+        happyPackMode: true,
+        getCustomTransformers: () => ({
+            before: [tsImportPluginFactory({
+                libraryName: 'antd',
+                libraryDirectory: 'es',
+                style: 'css'
+            })]
+        })
     },
 }
 
