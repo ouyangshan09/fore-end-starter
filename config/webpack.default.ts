@@ -87,6 +87,7 @@ const defaultConfig: Configuration = {
         }, {
             enforce: 'pre',
             test: /\.js$/,
+            exclude: /(node_modules|lib)/,
             loader: 'source-map-loader'
         }, {
             test: /\.s?(c|a)ss$/,
