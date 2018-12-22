@@ -54,7 +54,8 @@ const server = new Server(Webpack(serverConfig), {
     stats: {
         colors: true,
         cached: true
-    }
+    },
+    disableHostCheck: true
 });
 
 server.listen(Config.port, Config.host, () => {
