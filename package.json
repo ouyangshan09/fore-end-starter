@@ -36,6 +36,7 @@
     "@types/html-webpack-plugin": "^2.30.3",
     "@types/jest": "^20.0.8",
     "@types/lodash": "^4.14.106",
+    "@types/mini-css-extract-plugin": "^0.2.0",
     "@types/moment": "^2.13.0",
     "@types/node": "^9.6.1",
     "@types/opn": "^5.1.0",

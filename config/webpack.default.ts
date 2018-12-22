@@ -6,11 +6,13 @@
 import Webpack, { Configuration, Loader } from 'webpack';
 import Path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
 import Config from './config';
 
 const localIdentName = '[name]_[local]_[hash:base64:3]';
+const devMode = process.env.NODE_ENV === 'development';
 
 const BabelLoader: Loader = {
     loader: 'babel-loader',
@@ -94,14 +96,20 @@ const defaultConfig: Configuration = {
             exclude: [
                 Path.join(Config.src, 'resources')
             ],
-            use: ExtractTextPlugin.extract({
-                use: [
-                    cssLoader,
-                    postcssLoader,
-                    sassLoader
-                ],
-                fallback: 'style-loader'
-            })
+            use: [
+                devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+                cssLoader,
+                postcssLoader,
+                sassLoader
+            ]
+            // use: ExtractTextPlugin.extract({
+            //     use: [
+            //         cssLoader,
+            //         postcssLoader,
+            //         sassLoader
+            //     ],
+            //     fallback: 'style-loader'
+            // })
         }, {
             test: /\.s?(c|a)ss$/,
             include: [
@@ -111,14 +119,20 @@ const defaultConfig: Configuration = {
             exclude: [
                 /\.min\.css$/,
             ],
-            use: ExtractTextPlugin.extract({
-                use: [
-                    cssLoader,
-                    postcssLoader,
-                    sassLoader
-                ],
-                fallback: 'style-loader'
-            })
+            use: [
+                devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+                cssLoader,
+                postcssLoader,
+                sassLoader
+            ]
+            // use: ExtractTextPlugin.extract({
+            //     use: [
+            //         cssLoader,
+            //         postcssLoader,
+            //         sassLoader
+            //     ],
+            //     fallback: 'style-loader'
+            // })
         }, {
             test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
             loader: 'url-loader',
@@ -170,8 +184,12 @@ const defaultConfig: Configuration = {
         }),
         new ExtractTextPlugin({
             filename: '[name].css',
-            disable: process.env.NODE_ENV === 'development',
+            disable: devMode,
             allChunks: true
+        }),
+        new MiniCssExtractPlugin({
+            filename: devMode ? '[name].csss' : '[name].[hash].css',
+            chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
         }),
         new CaseSensitivePathsPlugin()
     ]
