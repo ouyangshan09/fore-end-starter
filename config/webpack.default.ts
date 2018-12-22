@@ -88,6 +88,9 @@ const defaultConfig: Configuration = {
             loader: 'source-map-loader'
         }, {
             test: /\.s?([c|a])ss$/,
+            include: [
+                Path.join(Config.src, 'resources/')
+            ],
             exclude: [
                 Path.join(Config.root, 'public'),
                 Path.join(Config.root, 'node_modules'),
@@ -148,7 +151,7 @@ const defaultConfig: Configuration = {
         }),
         new HtmlWebpackPlugin({
             template: Path.join(Config.src, 'index.html'),
-            title: 'ts-starter'
+            title: Config.title
         }),
         new ExtractTextPlugin({
             filename: '[name].css',

@@ -12,6 +12,7 @@ export default {
     src: Path.join(root, 'src'),
     lib: Path.join(root, 'lib'),
     dist: Path.join(root, 'dist'),
+    title: 'react-ts-starter',
     port: 80,
     protocol: 'http',
     host: 'starter.oy.ecaicn.com'
