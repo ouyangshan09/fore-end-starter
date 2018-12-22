@@ -169,7 +169,7 @@ const defaultConfig: Configuration = {
             title: Config.title
         }),
         new ExtractTextPlugin({
-            filename: '[name].[contenthash].css',
+            filename: '[name].css',
             disable: process.env.NODE_ENV === 'development',
             allChunks: true
         }),
