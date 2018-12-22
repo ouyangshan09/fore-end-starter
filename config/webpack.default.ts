@@ -169,8 +169,8 @@ const defaultConfig: Configuration = {
             title: Config.title
         }),
         new ExtractTextPlugin({
-            filename: '[name].css',
-            disable: false,
+            filename: '[name].[contenthash].css',
+            disable: true,
             allChunks: true
         }),
         new CaseSensitivePathsPlugin()
