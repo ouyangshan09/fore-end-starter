@@ -27,7 +27,7 @@ const serverConfig = WebpackMerge(DefaultConfig, {
     //     publicPath: '/',
     //     filename: '[name].ts'
     // },
-    devtool: 'cheap-module-eval-source-map',
+    // devtool: 'cheap-module-eval-source-map',
     plugins: [
         new Webpack.NamedModulesPlugin(),
         new Webpack.HotModuleReplacementPlugin(),
@@ -65,5 +65,6 @@ server.listen(Config.port, Config.host, () => {
     })
     console.log(`ts-starter is running`);
     console.log(`Please open url:`, url);
+    console.log('mode:', process.env.NODE_ENV);
     Opn(url);
 });
