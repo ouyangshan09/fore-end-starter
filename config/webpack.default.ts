@@ -87,14 +87,29 @@ const defaultConfig: Configuration = {
             test: /\.js$/,
             loader: 'source-map-loader'
         }, {
-            test: /\.s?([c|a])ss$/,
+            test: /\.s?(c|a)ss$/,
             include: [
-                Path.join(Config.src, 'resources/')
+                Path.join(Config.src, '/')
             ],
             exclude: [
-                Path.join(Config.root, 'public'),
-                Path.join(Config.root, 'node_modules'),
-                Path.join(Config.root, 'lib')
+                Path.join(Config.src, 'resources')
+            ],
+            use: ExtractTextPlugin.extract({
+                use: [
+                    cssLoader,
+                    postcssLoader,
+                    sassLoader
+                ],
+                fallback: 'style-loader'
+            })
+        }, {
+            test: /\.s?(c|a)ss$/,
+            include: [
+                Path.join(Config.src, 'resources'),
+                Path.join(Config.root, 'node_modules')
+            ],
+            exclude: [
+                /\.min\.css$/,
             ],
             use: ExtractTextPlugin.extract({
                 use: [
