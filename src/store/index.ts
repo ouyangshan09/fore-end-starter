@@ -69,7 +69,3 @@ export default function createStoreFn (type: Constant.Environment): Store<any> {
         return developmentStore();
     }
 };
-
-export {
-    Store
-}

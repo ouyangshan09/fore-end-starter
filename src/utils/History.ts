@@ -22,4 +22,6 @@ class HistoryObject {
 }
 
 export default HistoryObject.create;
-export {History, HistoryObject}
+export {
+    HistoryObject
+}

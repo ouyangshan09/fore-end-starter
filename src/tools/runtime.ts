@@ -2,9 +2,11 @@
  * 项目所需的所有变量，对象。参数管理
  * @author Ouyang
 */
+import { History } from 'history';
+import { Store } from 'redux';
 import { getRunTimeEnv } from './enviroment';
-import createHistory, { History } from '../utils/History';
-import createStore, { Store } from '../store';
+import createHistory from '../utils/History';
+import createStore from '../store';
 
 // Store初始化
 
