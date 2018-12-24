@@ -28,57 +28,7 @@ class A extends React.PureComponent {
 
     render () {
         return (
-            <div><B /></div>
-        )
-    }
-}
-
-class B extends React.PureComponent {
-    constructor(props: any) {
-        super(props)
-        console.log('B ctr');
-    }
-
-    componentWillMount() {
-        console.log('B Component WillMount');
-    }
-
-    componentDidMount() {
-        console.log('B Component DidMount');
-    }
-
-    render() {
-        return (
-            <div><C /></div>
-        )
-    }
-}
-
-class C extends React.PureComponent {
-    constructor(props: any) {
-        super(props)
-        console.log('C ctr');
-    }
-
-    componentWillMount() {
-        console.log('C Component WillMount');
-    }
-
-    componentDidMount() {
-        console.log('C Component DidMount');
-    }
-
-    render() {
-        return (
-            <div>C</div>
-        )
-    }
-}
-
-class D extends React.PureComponent {
-    render () {
-        return (
-            <div>D</div>
+            <div>A</div>
         )
     }
 }
