@@ -44,16 +44,19 @@ const TsLoader: Loader = {
     loader: 'ts-loader',
     options: {
         // 加快编译速度，取消静态类型检查
-        // transpileOnly: true,
+        transpileOnly: true,
         // 启动热更新
         happyPackMode: true,
         getCustomTransformers: () => ({
             before: [tsImportPluginFactory({
-                libraryName: 'antd',
                 libraryDirectory: 'es',
-                style: 'css'
+                libraryName: 'antd',
+                style: 'css',
             })]
-        })
+        }),
+        compilerOptions: {
+            module: 'es2015'
+        }
     },
 }
 
@@ -89,7 +92,7 @@ const defaultConfig: Configuration = {
     },
     module: {
         rules: [{
-            test: /\.ts(x?)$/,
+            test: /\.(jsx|tsx|js|ts)$/,
             exclude: /(node_modules|lib)/,
             use: [TsLoader]
         }, {
