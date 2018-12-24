@@ -25,9 +25,9 @@ class Account extends React.PureComponent<IProps, any> {
         return (
             <div styleName='Account' className='Account'>
                 <div className='wrapper'>
-                <Input prefix={<Icon type='user' style={{ color: 'rgba(0, 0, 0, 0.25)' }} />} placeholder='input Account' />
-                <Input prefix={<Icon type='lock' style={{ color: 'rgba(0, 0, 0, 0.25)' }} />} placeholder='input password' />
-                <Button type='primary' className='login-btn'>Login in</Button>
+                    <Input prefix={<Icon type='user' style={{ color: 'rgba(0, 0, 0, 0.25)' }} />} placeholder='input Account' />
+                    <Input prefix={<Icon type='lock' style={{ color: 'rgba(0, 0, 0, 0.25)' }} />} placeholder='input password' />
+                    <Button type='primary' className='login-btn'>Login in</Button>
                 </div>
             </div>
         )
