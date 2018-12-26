@@ -62,12 +62,9 @@ const awesomeTsLoader: Loader = {
     options: {
         transpileOnly: true,
         useBabel: true,
+        cacheDirectory: true,
+        babelCore: '@babel/core',
         babelOptions: {
-            cacheDirectory: true,
-            presets: [
-                ['env', { module: false }],
-                'react'
-            ],
             plugins: [
                 ['import', {
                     'libraryName': 'antd',
@@ -121,12 +118,13 @@ const defaultConfig: Configuration = {
         rules: [{
             test: /\.(jsx|tsx|js|ts)$/,
             exclude: /(node_modules|lib)/,
-            use: [TsLoader]
+            include: Config.src,
+            use: [awesomeTsLoader]
         }, {
+            test: /\.(js|jsx)$/,
+            loader: 'source-map-loader',
             enforce: 'pre',
-            test: /\.js$/,
-            exclude: /(node_modules|lib)/,
-            loader: 'source-map-loader'
+            include: Config.src
         }, {
             test: /\.s?(c|a)ss$/,
             include: [
