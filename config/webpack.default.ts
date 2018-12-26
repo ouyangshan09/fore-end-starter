@@ -46,17 +46,14 @@ const TsLoader: Loader = {
         // 加快编译速度，取消静态类型检查
         transpileOnly: true,
         // 启动热更新
-        happyPackMode: true,
-        getCustomTransformers: () => ({
-            before: [tsImportPluginFactory({
-                libraryDirectory: 'es',
-                libraryName: 'antd',
-                style: 'css',
-            })]
-        }),
-        compilerOptions: {
-            module: 'es2015'
-        }
+        happyPackMode: true
+        // getCustomTransformers: () => ({
+        //     before: [tsImportPluginFactory({
+        //         libraryDirectory: 'es',
+        //         libraryName: 'antd',
+        //         style: 'css',
+        //     })]
+        // })
     },
 }
 
