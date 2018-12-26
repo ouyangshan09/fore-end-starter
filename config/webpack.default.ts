@@ -57,6 +57,36 @@ const TsLoader: Loader = {
     },
 }
 
+const awesomeTsLoader: Loader = {
+    loader: 'awesome-typescript-loader',
+    options: {
+        transpileOnly: true,
+        useBabel: true,
+        babelOptions: {
+            cacheDirectory: true,
+            presets: [
+                ['env', { module: false }],
+                'react'
+            ],
+            plugins: [
+                ['import', {
+                    'libraryName': 'antd',
+                    'libraryDirectory': 'es',
+                    'style': true
+                }],
+                ['react-css-modules', {
+                    'filetypes': {
+                        '.scss': {
+                            'syntax': 'postcss-css'
+                        }
+                    },
+                    'generateScopedName': localIdentName
+                }]
+            ]
+        }
+    }
+}
+
 const cssLoader: Loader = {
     loader: 'typings-for-css-modules-loader',
     options: {
