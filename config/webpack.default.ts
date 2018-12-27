@@ -62,10 +62,12 @@ const awesomeTsLoader: Loader = {
     options: {
         transpileOnly: true,
         useBabel: true,
+        // useCache: true,
         cacheDirectory: true,
-        babelCore: '@babel/core',
+        babelCore: 'babel-core',
         babelOptions: {
             plugins: [
+                'lodash',
                 ['import', {
                     'libraryName': 'antd',
                     'libraryDirectory': 'es',
