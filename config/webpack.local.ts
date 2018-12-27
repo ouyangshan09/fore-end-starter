@@ -3,6 +3,7 @@
  * Webpack 开发环境配置
  * @author Ouyang
  */
+
 import Webpack, { Configuration } from 'webpack';
 import Server from 'webpack-dev-server';
 import WebpackMerge from 'webpack-merge';
@@ -36,7 +37,9 @@ const serverConfig = WebpackMerge(DefaultConfig, {
         new Webpack.HotModuleReplacementPlugin(),
         new ForkTsCheckerWebpackPlugin({
             checkSyntacticErrors: true,
-            watch: ['./src']
+            watch: Config.src,
+            async: false,
+            tsconfig: Path.join(Config.root, 'tsconfig.json')
         })
     ]
 });

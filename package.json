@@ -25,8 +25,7 @@
     "redux": "^3.7.2",
     "redux-actions": "^2.4.0",
     "redux-saga": "^0.16.0",
-    "ts-node": "^5.0.1",
-    "typescript": "^2.9.2"
+    "ts-node": "^5.0.1"
   },
   "devDependencies": {
     "@types/case-sensitive-paths-webpack-plugin": "^2.1.2",
@@ -67,7 +66,10 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-react-app": "^7.0.0",
     "babel-preset-stage-0": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "babel-preset-typescript": "^7.0.0-alpha.19",
     "case-sensitive-paths-webpack-plugin": "^2.1.2",
     "css-loader": "^0.28.11",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
@@ -94,6 +96,7 @@
     "ts-import-plugin": "^1.5.5",
     "ts-jest": "^20.0.14",
     "ts-loader": "^4.4.1",
+    "typescript": "^3.2.2",
     "typings-for-css-modules-loader": "^1.7.0",
     "url-loader": "^1.0.1",
     "webpack": "^4.3.0",
@@ -107,7 +110,7 @@
     "clean": "rimraf ./dist/*.* ./dist/*",
     "clean:lib": "rimraf ./lib/*.* ./lib/*",
     "build": "npm run clean && ts-node ./config/webpack.prod.ts",
-    "start": "ts-node ./config/webpack.local.ts",
+    "start": "node ./scripts/start.js",
     "dll": "npm run clean:lib && ts-node ./config/webpack.dll.ts"
   },
   "repository": {

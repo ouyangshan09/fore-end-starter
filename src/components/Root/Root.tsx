@@ -4,10 +4,17 @@
 */
 import React from 'react';
 import { Provider, Store } from 'react-redux';
-import { LocaleProvider } from 'antd';
+// import { LocaleProvider } from 'antd';
+import Antd from 'antd';
+import moment from 'moment';
+import lodash from 'lodash';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
 import { Router } from 'react-router';
 import { History } from 'history';
+
+console.log('antd:', Antd);
+console.log('moment:', moment);
+console.log('lodash:', lodash);
 
 interface IProps {
     store?: Store<any>,
@@ -17,11 +24,12 @@ interface IProps {
 class Root extends React.PureComponent<IProps> {
     render () {
         return (
-            <LocaleProvider locale={zhCN}>
-                <Provider store={this.props.store}>
-                    <Router history={this.props.history} children={this.props.children} />
-                </Provider>
-            </LocaleProvider>
+            1
+            // <LocaleProvider locale={zhCN}>
+            //     <Provider store={this.props.store}>
+            //         <Router history={this.props.history} children={this.props.children} />
+            //     </Provider>
+            // </LocaleProvider>
         )
     }
 }

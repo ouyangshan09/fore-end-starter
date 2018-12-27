@@ -46,14 +46,14 @@ const TsLoader: Loader = {
         // 加快编译速度，取消静态类型检查
         transpileOnly: true,
         // 启动热更新
-        happyPackMode: true
-        // getCustomTransformers: () => ({
-        //     before: [tsImportPluginFactory({
-        //         libraryDirectory: 'es',
-        //         libraryName: 'antd',
-        //         style: 'css',
-        //     })]
-        // })
+        happyPackMode: true,
+        getCustomTransformers: () => ({
+            before: [tsImportPluginFactory({
+                libraryDirectory: 'es',
+                libraryName: 'antd',
+                style: 'css',
+            })]
+        })
     },
 }
 
@@ -61,26 +61,32 @@ const awesomeTsLoader: Loader = {
     loader: 'awesome-typescript-loader',
     options: {
         transpileOnly: true,
-        useBabel: true,
-        // useCache: true,
-        cacheDirectory: true,
+        getCustomTransformers: program => ({
+            before: [
+                tsImportPluginFactory({
+                    libraryDirectory: 'es',
+                    libraryName: 'antd',
+                    style: 'css'
+                })
+            ]
+        }),
         babelCore: 'babel-core',
+        useBabel: true,
         babelOptions: {
+            babelrc: false,
+            compact: true,
             plugins: [
-                'lodash',
-                ['import', {
-                    'libraryName': 'antd',
-                    'libraryDirectory': 'es',
-                    'style': true
-                }],
-                ['react-css-modules', {
-                    'filetypes': {
-                        '.scss': {
-                            'syntax': 'postcss-css'
-                        }
-                    },
-                    'generateScopedName': localIdentName
-                }]
+                // 'stage-0',
+                // 'stage-3'
+                // 'lodash',
+                // ['react-css-modules', {
+                //     'filetypes': {
+                //         '.scss': {
+                //             'syntax': 'postcss-css'
+                //         }
+                //     },
+                //     'generateScopedName': localIdentName
+                // }]
             ]
         }
     }
@@ -89,12 +95,20 @@ const awesomeTsLoader: Loader = {
 const cssLoader: Loader = {
     loader: 'typings-for-css-modules-loader',
     options: {
-        module: true,
+        modules: true,
         localIdentName,
-        sourceMap: true,
+        importLoaders: 2,
+        sourceMap: devMode,
         // namedExport: true,
         // camelCase: true,
-        minimize: false,
+        minimize: devMode ? false : {
+            safe: true,
+            sourceMap: false,
+            autoprefixer: {
+                add: true,
+                remove: true
+            },
+        },
     }
 }
 
@@ -108,7 +122,7 @@ const postcssLoader: Loader = {
 const sassLoader: Loader = {
     loader: 'sass-loader',
     options: {
-        sourceMap: true
+        sourceMap: devMode
     }
 }
 
@@ -118,17 +132,32 @@ const defaultConfig: Configuration = {
     },
     module: {
         rules: [{
-            test: /\.(jsx|tsx|js|ts)$/,
+            test: /\.(tsx|ts)$/,
             exclude: /(node_modules|lib)/,
             include: Config.src,
-            use: [awesomeTsLoader]
+            use: [
+                awesomeTsLoader
+            ]
+        }, {
+            test: /\.(js|jsx|mjs)$/,
+            loader: 'babel-loader',
+            include: Config.src,
+            options: {
+                babelrc: false,
+                compact: true,
+                presets: [
+                    "react-app",
+                    "stage-3"
+                ]
+            },
+            exclude: /node_modules/
         }, {
             test: /\.(js|jsx)$/,
             loader: 'source-map-loader',
             enforce: 'pre',
             include: Config.src
         }, {
-            test: /\.s?(c|a)ss$/,
+            test: /\.(scss|sass)$/,
             include: [
                 Path.join(Config.src, '/')
             ],
@@ -141,37 +170,12 @@ const defaultConfig: Configuration = {
                 postcssLoader,
                 sassLoader
             ]
-            // use: ExtractTextPlugin.extract({
-            //     use: [
-            //         cssLoader,
-            //         postcssLoader,
-            //         sassLoader
-            //     ],
-            //     fallback: 'style-loader'
-            // })
         }, {
-            test: /\.s?(c|a)ss$/,
-            include: [
-                Path.join(Config.src, 'resources'),
-                Path.join(Config.root, 'node_modules')
-            ],
-            exclude: [
-                /\.min\.css$/,
-            ],
+            test: /\.css$/,
             use: [
                 devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-                cssLoader,
-                postcssLoader,
-                sassLoader
+                'css-loader'
             ]
-            // use: ExtractTextPlugin.extract({
-            //     use: [
-            //         cssLoader,
-            //         postcssLoader,
-            //         sassLoader
-            //     ],
-            //     fallback: 'style-loader'
-            // })
         }, {
             test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
             loader: 'url-loader',
@@ -213,18 +217,13 @@ const defaultConfig: Configuration = {
         }]
     },
     plugins: [
-        new Webpack.DllReferencePlugin({
-            context: Config.root,
-            manifest: require(Path.join(Config.root, 'lib/vendor-manifest.json'))
-        }),
+        // new Webpack.DllReferencePlugin({
+        //     context: Config.root,
+        //     manifest: require(Path.join(Config.root, 'lib/vendor-manifest.json'))
+        // }),
         new HtmlWebpackPlugin({
             template: Path.join(Config.src, 'index.html'),
             title: Config.title
-        }),
-        new ExtractTextPlugin({
-            filename: '[name].css',
-            disable: devMode,
-            allChunks: true
         }),
         new MiniCssExtractPlugin({
             filename: devMode ? '[name].csss' : '[name].[hash].css',
