@@ -163,13 +163,6 @@ module.exports = {
                 test: /\.(png|jpg|jpeg|gif)(\?v=\d+\.\d+\.\d+)?$/i,
                 loader: 'url-loader',
                 options: { limit: 10000 }
-            },
-            {
-                test: /\.html?$/,
-                loader: 'file-loader',
-                options: {
-                    name: '[name].[ext]'
-                }
             }
         ]
     },

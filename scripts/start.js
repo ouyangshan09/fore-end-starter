@@ -7,17 +7,27 @@
 const url = require('url');
 const config = require('../config/config');
 const devConfig = require('../config/webpack.dev');
+const chalk = require('chalk');
 const opn = require('opn');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 
-const compiler = webpack(devConfig, (err, stats) => {
-    if (err || stats.hasErrors() || stats.hasWarnings()) {
+function createCompiler (webpack, config) {
+    let compiler;
+    try {
+        compiler = webpack(config);
+    } catch (err) {
+        console.log(chalk.red('Failed to compile.'));
+        console.log();
+        console.log(err.message || err);
+        console.log();
         process.exit(1);
-    } else {
-        process.exit(0);
     }
-})
+
+    return compiler;
+}
+
+const compiler = createCompiler(webpack, devConfig);
 
 const webpackDevServer = new WebpackDevServer(compiler, {
     historyApiFallback: true,

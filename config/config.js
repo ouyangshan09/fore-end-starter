@@ -6,7 +6,7 @@
 
 const path = require('path');
 
-const root = path.join(__dirname, '../');
+const root = path.resolve(__dirname, '../');
 
 module.exports = {
     root: root,
