@@ -57,10 +57,10 @@ module.exports = {
     devtool: 'cheap-module-source-map',
     entry: {
         app: [
-            // config.polyfill,
-            // 'react-hot-loader/patch',
-            // 'webpack-dev-server/client?' + url.format({protocol: config.protocol, host: config.host, port: config.port}),
-            // 'webpack/hot/dev-server',
+            config.polyfill,
+            'react-hot-loader/patch',
+            'webpack-dev-server/client?' + url.format({protocol: config.protocol, host: config.host, port: config.port}),
+            'webpack/hot/dev-server',
             config.appBoot
         ]
     },

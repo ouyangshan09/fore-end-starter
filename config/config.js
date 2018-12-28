@@ -13,7 +13,7 @@ module.exports = {
     src: path.join(root, 'src'),
     lib: path.join(root, 'lib'),
     dist: path.join(root, 'dest'),
-    appBoot: path.join(root, 'src', 'index2.tsx'),
+    appBoot: path.join(root, 'src', 'index.tsx'),
     appHtml: path.join(root, 'src', 'index.html'),
     polyfill: path.join(root, 'config', 'prolyfill.js'),
     appTsConfig: path.join(root, 'tsconfig.json'),
