@@ -4,8 +4,8 @@
  * @author Ouyang
 */
 
-const url = require('url');
-const path = require('path');
+// const url = require('url');
+// const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
