@@ -1,3 +1,9 @@
 import _ from 'lodash';
 
-console.log(_.merge({}, {name: 'ouyang'}));
+const test = {
+    name: {
+        ouyang: 'zhouanqi'
+    }
+};
+
+console.log(_.get(test, 'name.ouyang'));
