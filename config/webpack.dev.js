@@ -12,6 +12,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const tsImportPluginFactory = require('ts-import-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const config = require('./config');
 
 const localIdentName = '[name]_[local]_[hash:base64:3]';
@@ -181,6 +182,7 @@ module.exports = {
             filename: devMode ? '[name].csss' : '[name].[hash].css',
             chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
         }),
+        new LodashModuleReplacementPlugin(),
         new CaseSensitivePathsPlugin(),
         new ForkTsCheckerWebpackPlugin({
             async: false,

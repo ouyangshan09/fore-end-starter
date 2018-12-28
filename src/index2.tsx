@@ -1,3 +1,3 @@
-import { merge } from 'lodash';
+import _ from 'lodash';
 
-console.log(merge({}, {name: 'ouyang'}));
+console.log(_.merge({}, {name: 'ouyang'}));
