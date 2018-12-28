@@ -56,10 +56,10 @@ module.exports = {
     devtool: 'cheap-module-source-map',
     entry: {
         app: [
-            config.polyfill,
-            'react-hot-loader/patch',
-            'webpack-dev-server/client?' + url.format({protocol: config.protocol, host: config.host, port: config.port}),
-            'webpack/hot/dev-server',
+            // config.polyfill,
+            // 'react-hot-loader/patch',
+            // 'webpack-dev-server/client?' + url.format({protocol: config.protocol, host: config.host, port: config.port}),
+            // 'webpack/hot/dev-server',
             config.appBoot
         ]
     },
@@ -95,8 +95,7 @@ module.exports = {
                                 'stage-0'
                             ],
                             plugins: [
-                                'syntax-dynamic-import',
-                                'lodash'
+                                'syntax-dynamic-import'
                             ]
                         }
                     },
@@ -114,7 +113,14 @@ module.exports = {
                                         style: 'css'
                                     })
                                 ]
-                            })
+                            }),
+                            useBabel: true,
+                            babelOptions: {
+                                babelrc: false,
+                                plugins: [
+                                    'lodash'
+                                ]
+                            }
                         }
                     },
                     {
