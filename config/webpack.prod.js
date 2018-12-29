@@ -189,6 +189,6 @@ module.exports = {
             watch: config.src,
             tsconfig: config.appTsConfig,
             checkSyntacticErrors: true
-        })
+        }) 
     ]
 };
