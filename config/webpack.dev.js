@@ -5,7 +5,7 @@
 */
 
 // const url = require('url');
-// const path = require('path');
+const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -174,6 +174,10 @@ module.exports = {
         ]
     },
     plugins: [
+        // new webpack.DllReferencePlugin({
+        //     context: config.root,
+        //     manifest: require(path.join(config.lib, 'vendor-manifest.json'))
+        // }),
         new HtmlWebpackPlugin({
             template: config.appHtml,
             title: config.title
