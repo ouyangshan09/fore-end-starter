@@ -167,10 +167,10 @@ module.exports = {
         ]
     },
     plugins: [
-        // new webpack.DllReferencePlugin({
-        //     context: config.root,
-        //     manifest: require(path.join(config.lib, 'vendor-manifest.json'))
-        // }),
+        new webpack.DllReferencePlugin({
+            context: config.root,
+            manifest: require(path.join(config.lib, 'vendor-manifest.json'))
+        }),
         new HtmlWebpackPlugin({
             template: config.appHtml,
             title: config.title
