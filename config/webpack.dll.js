@@ -14,7 +14,6 @@ module.exports = {
             'react',
             'react-dom',
             'react-css-modules',
-            'react-dom',
             'react-redux',
             'react-router',
             'react-router-dom',
