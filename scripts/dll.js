@@ -11,7 +11,7 @@ const ora = require('ora');
 const chalk = require('chalk');
 const webpack = require('webpack');
 
-const Spinner = ora('building for dll file...');
+const Spinner = ora('building for dll file... \n');
 Spinner.start();
 
 rimraf(config.lib, err => {

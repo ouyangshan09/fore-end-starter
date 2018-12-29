@@ -12,7 +12,7 @@ module.exports = {
     root: root,
     src: path.join(root, 'src'),
     lib: path.join(root, 'lib'),
-    dist: path.join(root, 'dest'),
+    dist: path.join(root, 'dist'),
     appBoot: path.join(root, 'src', 'index.tsx'),
     appHtml: path.join(root, 'src', 'index.html'),
     polyfill: path.join(root, 'config', 'prolyfill.js'),

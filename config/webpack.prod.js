@@ -4,6 +4,7 @@
  * @author Ouyang
 */
 
+const path = require('path');
 const config = require('./config');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -34,7 +35,7 @@ const cssloader = {
 }
 
 const postcssLoader = {
-    loader: 'post-loader',
+    loader: 'postcss-loader',
     options: {
         sourceMap: false
     }
@@ -48,8 +49,9 @@ const sassLoader = {
 }
 
 module.exports = {
+    bail: true,
     mode: 'production',
-    devtool: 'source-map',
+    // devtool: 'source-map',
     entry: {
         app: [
             config.polyfill,
@@ -64,9 +66,9 @@ module.exports = {
         chunkFilename: 'static/js/[id].[chunkhash].chunk.js'
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']
+        extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']  
     },
-    modules: {
+    module: {
         rules: [
             {
                 test: /\.(js|jsx|mjs)$/,

@@ -112,7 +112,7 @@
     "test": "ts-node ./config/jest.ts",
     "clean": "rimraf ./dist/*.* ./dist/*",
     "clean:lib": "rimraf ./lib/*.* ./lib/*",
-    "build": "npm run clean && ts-node ./config/webpack.prod.ts",
+    "build": "npm run clean && node ./scripts/prod.js",
     "start": "node ./scripts/start.js",
     "dll": "npm run clean:lib && node ./scripts/dll.js"
   },
