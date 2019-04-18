@@ -1,20 +1,21 @@
 {
     "presets": [
-        ["env", { "modules": false }],
-        "react",
-        "stage-0"
+        ["@babel/env", { "modules": false }],
+        "@babel/react"
     ],
     "env": {
         "test": {
-          "presets": [["env"], "stage-0"],
+          "presets": [["@babel/env"]],
             "plugins": [
-                "transform-decorators-legacy",
-                "syntax-dynamic-import"
+                ["@babel/plugin-proposal-decorators", {"legacy": true}],
+                ["@babel/plugin-proposal-class-properties", {"loose": true}],
+                "@babel/plugin-syntax-dynamic-import"
             ]
         }
     },
     "plugins": [
-        "transform-decorators-legacy",
-        "syntax-dynamic-import"
+        ["@babel/plugin-proposal-decorators", {"legacy": true}],
+        ["@babel/plugin-proposal-class-properties", {"loose": true}],
+        "@babel/plugin-syntax-dynamic-import"
     ]
 }

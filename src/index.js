@@ -1,20 +1,14 @@
+import './index.scss';
 import React from 'react';
 import ReactDom from 'react-dom';
-import CSSModules from 'react-css-modules';
 import PropTypes from 'prop-types';
-import Styles from './index.scss';
 
-@CSSModules(Styles)
 class Index extends React.PureComponent {
     static propTypes = {
         className: PropTypes.string
     };
 
     static defaultProps = {};
-
-    constructor (props) {
-        super(props);
-    }
 
     render () {
         return (

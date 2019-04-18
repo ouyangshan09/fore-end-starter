@@ -31,7 +31,15 @@ module.exports = {
                 use: ExtractTextPlugin.extract({
                     // use: ['css-loader', 'postcss-loader', 'sass-loader'],
                     use: [
-                        Object.assign({}, {loader: 'css-loader'}, {options: {modules: true, localIdentName: '[hash:base64:4]'}}),
+                        Object.assign(
+                            {},
+                            {loader: 'css-loader', options: {
+                                modules: true,
+                                localIdentName: '[hash:base64:10]',
+                                importLoaders: 1,
+                                sourceMap: true
+                            }}
+                        ),
                         {loader: 'postcss-loader'},
                         {loader: 'sass-loader'}
                     ],
