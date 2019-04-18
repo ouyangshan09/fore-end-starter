@@ -6,6 +6,7 @@
 /.project
 /.idea
 /.vscode/
+/.awcache/
 /.DS_Store/
 /coverage/
 /yarn.lock
